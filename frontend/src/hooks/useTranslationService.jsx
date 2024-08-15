@@ -9,7 +9,7 @@ const useTranslationService = () => {
     const getSuportedLanguages = async () => {
       try {
         const response = await performFetch(
-          "http://localhost:1234/api/v1/languages"
+          "https://translate-voice-app.vercel.app/api/v1/languages"
         );
 
         setLanguages(response.data);
@@ -30,7 +30,7 @@ const useTranslationService = () => {
     try {
       setError(null);
       const response = await performFetch(
-        "http://localhost:1234/api/v1/translate",
+        "https://translate-voice-app.vercel.app/api/v1/translate",
         {
           method: "POST",
           headers: {
