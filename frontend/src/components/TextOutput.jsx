@@ -1,24 +1,19 @@
-import { useState } from "react";
-import { IconAudioWave, IconPlayCircle } from "./icons/Icons";
-import { useContextVoice } from "../hooks/useContextVoice";
-import { useContextSettings } from "../hooks/useContextSettings";
+import { useState } from 'react'
+import { IconAudioWave, IconPlayCircle } from './icons/Icons'
+import { useContextVoice } from '../hooks/useContextVoice'
+import { useContextSettings } from '../hooks/useContextSettings'
 
 const TextOutput = () => {
-  const [listen, setListen] = useState("");
+  const [listen, setListen] = useState('')
   const { languages, translatedText, speakText, isPlaying, transcript } =
-    useContextVoice();
-  const { inputLang, outputLang, dispatch } = useContextSettings();
+    useContextVoice()
+  const { inputLang, outputLang, dispatch } = useContextSettings()
 
   const handleListening = (name, text) => {
-    if (isPlaying) return;
-    speakText(text);
-    setListen(name);
-  };
-  const decodeHTMLEntities = (text) => {
-    const textArea = document.createElement("textarea");
-    textArea.innerHTML = text || "";
-    return textArea.value;
-  };
+    if (isPlaying) return
+    speakText(text)
+    setListen(name)
+  }
 
   return (
     <section className="text-output">
@@ -30,7 +25,7 @@ const TextOutput = () => {
             title="Seleccione el idioma original"
             value={inputLang}
             onChange={(e) =>
-              dispatch({ type: "SET_INPUT_LANG", payload: e.target.value })
+              dispatch({ type: 'SET_INPUT_LANG', payload: e.target.value })
             }
           >
             {languages !== null &&
@@ -43,7 +38,7 @@ const TextOutput = () => {
         </label>
         {transcript && (
           <ButtonPlay
-            name={"original"}
+            name={'original'}
             handleListening={(name) => handleListening(name, transcript)}
             isPlaying={isPlaying}
             listen={listen}
@@ -59,7 +54,7 @@ const TextOutput = () => {
             title="Seleccione el idioma de traducción"
             value={outputLang}
             onChange={(e) =>
-              dispatch({ type: "SET_OUTPUT_LANG", payload: e.target.value })
+              dispatch({ type: 'SET_OUTPUT_LANG', payload: e.target.value })
             }
           >
             {languages !== null &&
@@ -72,17 +67,17 @@ const TextOutput = () => {
         </label>
         {translatedText && (
           <ButtonPlay
-            name={"translated"}
+            name={'translated'}
             handleListening={(name) => handleListening(name, translatedText)}
             isPlaying={isPlaying}
             listen={listen}
           />
         )}
-        <p translate="no">{decodeHTMLEntities(translatedText)}</p>
+        <p translate="no">{translatedText}</p>
       </div>
     </section>
-  );
-};
+  )
+}
 
 const ButtonPlay = ({ name, handleListening, isPlaying, listen }) => {
   return (
@@ -90,14 +85,14 @@ const ButtonPlay = ({ name, handleListening, isPlaying, listen }) => {
       disabled={isPlaying}
       className={`round-button`}
       onClick={() => {
-        handleListening(name);
+        handleListening(name)
       }}
     >
       <span role="img" aria-label="Start listening">
         {isPlaying && listen === name ? <IconAudioWave /> : <IconPlayCircle />}
       </span>
     </button>
-  );
-};
+  )
+}
 
-export default TextOutput;
+export default TextOutput
