@@ -21,12 +21,12 @@ app.use(cors(apiConfig.CORS_SETTINGS))
 app.use(logger)
 
 // Serve static files.
-app.use('/', express.static(path.resolve('./public')))
+app.use('/', express.static(path.resolve('./frontend')))
 
 // Use one router
 app.use(translate)
 app.use(languages)
 app.get('*', (req, res) => {
-    res.send(express.static(path.resolve('./public')))
+    res.send(express.static(path.resolve('./frontend')))
   })
 export default app
