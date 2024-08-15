@@ -21,7 +21,7 @@ app.use(cors(apiConfig.CORS_SETTINGS))
 app.use(logger)
 
 // Serve static files.
-app.use('/', express.static(path.resolve('./public')))
+app.use(express.static(path.resolve('./public')))
 
 // Use one router
 app.use(translate)
