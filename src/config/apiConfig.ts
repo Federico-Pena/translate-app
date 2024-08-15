@@ -1,7 +1,7 @@
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? `http://localhost:${process.env.PORT ?? 1234}`
-    : '/'
+    : 'https://translate-voice-app.vercel.app/'
 
 const CORS_SETTINGS = {
   origin: [API_URL, 'http://localhost:5173'], // Allow specific origins

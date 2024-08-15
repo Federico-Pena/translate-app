@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.apiConfig = void 0;
 const API_URL = process.env.NODE_ENV === 'development'
     ? `http://localhost:${(_a = process.env.PORT) !== null && _a !== void 0 ? _a : 1234}`
-    : '/';
+    : 'https://translate-voice-app.vercel.app/';
 const CORS_SETTINGS = {
     origin: [API_URL, 'http://localhost:5173'], // Allow specific origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
