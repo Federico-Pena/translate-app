@@ -1,0 +1,131 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+main {
+  max-width: 1200px;
+  min-height: 100dvh;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  position: relative;
+  row-gap: 1rem;
+}
+h1 {
+  text-align: center;
+  grid-column: 1/-1;
+  padding: 1rem;
+}
+.controls {
+  display: grid;
+  padding: 1rem;
+
+  & .round-button {
+    justify-self: center;
+    background-color: #007bff;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    & span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &:hover {
+      background-color: #0056b3;
+    }
+    &:active {
+      background-color: #003d80;
+    }
+  }
+  & .round-button.anim-pLay {
+    animation: play 1s infinite linear;
+  }
+  & label {
+    display: grid;
+    align-items: center;
+    gap: 0.5rem;
+    & select {
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 16px;
+      text-transform: capitalize;
+    }
+  }
+}
+.text-output {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+  & .column {
+    padding: 1rem;
+    display: grid;
+    border-radius: 0.3rem;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-template-rows: auto 1fr;
+    row-gap: 0.5rem;
+    & label {
+      grid-column: 1/-1;
+      display: grid;
+      row-gap: 0.5rem;
+      & select {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-size: 16px;
+        text-transform: capitalize;
+      }
+    }
+    & p {
+      padding: 1rem;
+      word-wrap: break-word;
+      grid-column: 2/-1;
+    }
+    & .round-button {
+      justify-self: center;
+      background-color: #007bff;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      & span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  text-align: center;
+  color: red;
+}
+
+@keyframes play {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
